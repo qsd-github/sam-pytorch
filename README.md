@@ -17,7 +17,7 @@ pip install sam_pytorch-1.0-py3-none-any.whl
 ### Installation using Git source code
 
 ```python
-pip install . -i https://pypi.tuna.tsinghua.edu.cn/simple
+pip install .
 ```
 
 > Issue: Error occurs during PyTorch installation.
