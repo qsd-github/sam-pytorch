@@ -17,7 +17,7 @@ pip install sam_pytorch-1.0-py3-none-any.whl
 ### Installation using Git source code
 
 ```python
-pip install .
+pip install . -i https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
 > Issue: Error occurs during PyTorch installation.
@@ -319,7 +319,7 @@ input_boxes = np.array([
     [1240, 675, 1400, 750],
 ])
 
-sam_box = SAM("./images/truck.jpg",sam_checkpoint_path="./weights/sam_vit_b.pth", input_boxes=input_boxes).box()
+sam_box = SAM("./images/truck.jpg",sam_checkpoint_path="./weights/sam_vit_b.pth", input_boxes=input_boxes).boxes()
 sam_box.image(is_save=True, save_path="./outputs/truck_box.jpg")
 sam_box.predict(is_save=True, save_path="./outputs/truck_box_mask.jpg")
 sam_box.save(save_path=r"./outputs/truck_box_mask.jpg")
@@ -490,7 +490,7 @@ def save(self, save_path):
 ```python
 from sam.sam import SAM
 
-sam_text = SAM("./images/fruits.jpg", sam_checkpoint_path="./weights/sam_vit_b.pth", text="orange", clip_model_path=r"./weights/ViT-B-32.pt").text()
+sam_text = SAM("./images/fruits.jpg", sam_checkpoint_path='ViT-B/32', text="orange", clip_model_path='ViT-B/32').text()
 sam_text.image() 
 sam_text.predict(is_save=True, save_path=r"./outputs/fruits_text_mask.jpg")
 sam_text.save(save_path=r"./outputs/fruits_text_mask.jpg")
