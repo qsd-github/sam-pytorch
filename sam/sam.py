@@ -7,7 +7,7 @@ from sam.text import SAMText
 
 class SAM:
     def __init__(self, image_path, input_points=None,
-                 input_labels=None, input_boxes=None, optim_masks=None, text=None, model_type="vit_b", sam_checkpoint_path=None, clip_model_path=None, is_multimask=True, is_cuda=True):
+                 input_labels=None, input_boxes=None, optim_masks=None, text=None, model_type="vit_b", sam_checkpoint_path='ViT-B/32', clip_model_path=None, is_multimask=True, is_cuda=True):
         if image_path is None:
             raise ValueError("Please provide parameters: ['image_path']!")
         self._image_path = image_path

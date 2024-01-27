@@ -10,7 +10,7 @@ import cv2 as cv
 
 
 class SAMText(SAMPrompt):
-    def __init__(self, image_path, text, clip_model_path=None, model_type="vit_b", sam_checkpoint_path=None,
+    def __init__(self, image_path, text, clip_model_path='ViT-B/32', model_type="vit_b", sam_checkpoint_path=None,
                  is_multimask=True, is_cuda=True):
         super().__init__(image_path, text=text, model_type=model_type, sam_checkpoint_path=sam_checkpoint_path, is_multimask=is_multimask, is_cuda=is_cuda)
 
