@@ -319,7 +319,7 @@ input_boxes = np.array([
     [1240, 675, 1400, 750],
 ])
 
-sam_box = SAM("./images/truck.jpg",sam_checkpoint_path="./weights/sam_vit_b.pth", input_boxes=input_boxes).box()
+sam_box = SAM("./images/truck.jpg",sam_checkpoint_path="./weights/sam_vit_b.pth", input_boxes=input_boxes).boxes()
 sam_box.image(is_save=True, save_path="./outputs/truck_box.jpg")
 sam_box.predict(is_save=True, save_path="./outputs/truck_box_mask.jpg")
 sam_box.save(save_path=r"./outputs/truck_box_mask.jpg")
