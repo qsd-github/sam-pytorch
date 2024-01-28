@@ -390,6 +390,7 @@ def save(self, save_path):
 
 ```python
 from sam import SAM
+import cv2 as cv
 
 optim_mask = cv.imread("./images/tiger_mask.jpg")
 sam_optim = SAM("./images/tiger.jpg", sam_checkpoint_path="./weights/sam_vit_b.pth", optim_masks=optim_mask).optim()
