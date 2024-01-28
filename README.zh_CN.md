@@ -6,6 +6,18 @@
 
 ## 安装部分
 
+- `github`网址：
+
+```python
+https://github.com/qsd-github/sam-pytorch
+```
+
+- `gitee`网址：
+
+```python
+https://gitee.com/qsdmykj/sam-pytorch
+```
+
 - `python`版本要求：`python>=3.10.9`
 
 - 先安装`pytorch`系列
@@ -162,7 +174,7 @@ def crop_boxes(self):
 #### 完整使用代码
 
 ```python
-from sam.sam import SAM
+from sam import SAM
 
 sam_any = SAM("./images/truck.jpg",sam_checkpoint_path="./weights/sam_vit_b.pth").any()
 sam_any.image()
@@ -238,7 +250,7 @@ def save(self, save_path):
 #### 完整使用代码
 
 ```python
-from sam.sam import SAM
+from sam import SAM
 import numpy as np
 
 input_points = np.array([(500, 375), (1125, 625), (500, 70), (1100, 150)])  # 设置了前景点和背景点
@@ -317,7 +329,7 @@ def save(self, save_path):
 #### 完整使用代码
 
 ```python
-from sam.sam import SAM
+from sam import SAM
 import numpy as np
 
 input_boxes = np.array([
@@ -396,7 +408,8 @@ def save(self, save_path):
 #### 完整使用代码
 
 ```python
-from sam.sam import SAM
+from sam import SAM
+import cv2 as cv
 
 optim_mask = cv.imread("./images/tiger_mask.jpg")
 sam_optim = SAM("./images/tiger.jpg", sam_checkpoint_path="./weights/sam_vit_b.pth", optim_masks=optim_mask).optim()
@@ -440,11 +453,14 @@ sam_optim[0]
 - 初始化方法(`__init__()`)：
 
 ```python
-def __init__(self, image_path, text, model_type="vit_b",
-                 sam_checkpoint_path="./weights/sam_vit_b.pth", is_multimask=True, is_cuda=True):
+def __init__(self, image_path, text, clip_model_path=None, model_type="vit_b", sam_checkpoint_path=None,
+                 is_multimask=True, is_cuda=True):
     """
     :param image_path:需要进行分割图片的地址
     :param text:输入的文本
+    :param clip_model_path:clip的权重，可以选择
+    	RN50', 'RN101', 'RN50x4', 'RN50x16', 'RN50x64', 'ViT-B/32', 'ViT-B/16', 'ViT-L/14', 'ViT-L/14@336px'
+    	一般是使用'ViT-B/32'，若有权重可以使用权重地址
     :param model_type:sam模型的类别
     :param sam_checkpoint_path:sam权重路径,不提供会自动进行下载
     :param is_multimask:是否是多重mask
@@ -497,9 +513,9 @@ def save(self, save_path):
 #### 完整使用代码
 
 ```python
-from sam.sam import SAM
+from sam import SAM
 
-sam_text = SAM("./images/fruits.jpg", sam_checkpoint_path="./weights/sam_vit_b.pth", text="orange", clip_model_path=r"./weights/ViT-B-32.pt").text()
+sam_text = SAM("./images/fruits.jpg", sam_checkpoint_path="./weights/sam_vit_b.pth", text="orange", clip_model_path='ViT-B/32').text()
 sam_text.image() 
 sam_text.predict(is_save=True, save_path=r"./outputs/fruits_text_mask.jpg")
 sam_text.save(save_path=r"./outputs/fruits_text_mask.jpg")
