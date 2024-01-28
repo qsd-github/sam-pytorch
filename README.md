@@ -154,7 +154,7 @@ def crop_boxes(self):
 #### Complete Usage Code
 
 ```python
-from sam.sam import SAM
+from sam import SAM
 
 sam_any = SAM("./images/truck.jpg",sam_checkpoint_path="./weights/sam_vit_b.pth").any()
 sam_any.image()
@@ -230,7 +230,7 @@ def save(self, save_path):
 #### Complete Usage Code
 
 ```python
-from sam.sam import SAM
+from sam import SAM
 import numpy as np
 
 input_points = np.array([(500, 375), (1125, 625), (500, 70), (1100, 150)])  # Set foreground and background points
@@ -309,7 +309,7 @@ def save(self, save_path):
 #### Complete Usage Code
 
 ```python
-from sam.sam import SAM
+from sam import SAM
 import numpy as np
 
 input_boxes = np.array([
@@ -389,7 +389,7 @@ def save(self, save_path):
 #### Complete Usage Code
 
 ```python
-from sam.sam import SAM
+from sam import SAM
 
 optim_mask = cv.imread("./images/tiger_mask.jpg")
 sam_optim = SAM("./images/tiger.jpg", sam_checkpoint_path="./weights/sam_vit_b.pth", optim_masks=optim_mask).optim()
@@ -488,7 +488,7 @@ def save(self, save_path):
 #### Complete Usage Code
 
 ```python
-from sam.sam import SAM
+from sam import SAM
 
 sam_text = SAM("./images/fruits.jpg", sam_checkpoint_path='ViT-B/32', text="orange", clip_model_path='ViT-B/32').text()
 sam_text.image() 
